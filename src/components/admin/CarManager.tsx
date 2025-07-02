@@ -10,9 +10,7 @@ import {
   Car as CarIcon, 
   Search,
   Star,
-  StarOff,
-  Save,
-  X
+  StarOff
 } from 'lucide-react';
 import { Car } from '@/types';
 import CarForm from './CarForm';

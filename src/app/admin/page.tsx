@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Car } from '@/types';
 import AdminLogin from '@/components/admin/AdminLogin';
 import CarManager from '@/components/admin/CarManager';
 

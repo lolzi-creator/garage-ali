@@ -7,7 +7,8 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     comment: 'Ausgezeichneter Service! Sie haben die Probleme meines Autos schnell diagnostiziert und alles zu einem fairen Preis repariert. Das Personal war professionell und hat alles klar erklärt. Sehr empfehlenswert!',
     date: '2024-01-15',
-    service: 'Motor Diagnose'
+    service: 'Motor Diagnose',
+    type: 'car_purchase'
   },
   {
     id: 'testimonial-2', 
@@ -15,7 +16,8 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     comment: 'Komme seit 3 Jahren hierher. Immer ehrlich, zuverlässig und die Arbeit wird beim ersten Mal richtig gemacht. Beste Autowerkstatt in der Region!',
     date: '2024-01-10',
-    service: 'Ölwechsel'
+    service: 'Ölwechsel',
+    type: 'service'
   },
   {
     id: 'testimonial-3',
@@ -23,7 +25,8 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     comment: 'Meine Bremsen haben Geräusche gemacht und sie wurden am selben Tag repariert. Grossartiger Kundenservice und sehr kompetent. Faire Preise auch!',
     date: '2024-01-08',
-    service: 'Bremsen Service'
+    service: 'Bremsen Service',
+    type: 'service'
   },
   {
     id: 'testimonial-4',
@@ -31,7 +34,8 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     comment: 'Professioneller Service und ehrliche Preise. Sie versuchen nicht, einem Dinge zu verkaufen, die man nicht braucht. Komme definitiv für alle Autowartungen zurück.',
     date: '2024-01-05',
-    service: 'Getriebe Service'
+    service: 'Getriebe Service',
+    type: 'service'
   },
   {
     id: 'testimonial-5',
@@ -39,7 +43,8 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     comment: 'Meine Klimaanlage funktionierte mitten im Sommer nicht. Sie reparierten sie schnell und zu einem vernünftigen Preis. Sehr zufrieden mit dem Service!',
     date: '2024-01-03',
-    service: 'Klima Service'
+    service: 'Klima Service',
+    type: 'service'
   },
   {
     id: 'testimonial-6',
@@ -47,6 +52,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     comment: 'Tolle Erfahrung! Sie konnten mich kurzfristig für neue Reifen einplanen. Qualitätsarbeit und freundliches Personal. Sehr empfehlenswert!',
     date: '2024-01-01',
-    service: 'Reifen Service'
+    service: 'Reifen Service',
+    type: 'service'
   }
 ]; 

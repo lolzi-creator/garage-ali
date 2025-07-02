@@ -36,10 +36,10 @@ function writeCarsToFile(cars: Car[]) {
 // PUT /api/admin/cars/[id] - Update a car
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const updatedCarData: Car = await request.json();
     
     const cars = readCarsFromFile();
@@ -68,10 +68,10 @@ export async function PUT(
 // DELETE /api/admin/cars/[id] - Delete a car
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     
     const cars = readCarsFromFile();
     const carIndex = cars.findIndex(car => car.id === id);

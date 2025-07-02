@@ -6,7 +6,6 @@ import {
   X, 
   Save, 
   Upload, 
-  Trash2,
   Car as CarIcon,
   AlertCircle,
   Camera
@@ -62,7 +61,7 @@ export default function CarForm({ car, onClose, onSave }: CarFormProps) {
     }
   }, [car]);
 
-  const handleInputChange = (field: keyof Car, value: any) => {
+  const handleInputChange = (field: keyof Car, value: string | number | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field]) {

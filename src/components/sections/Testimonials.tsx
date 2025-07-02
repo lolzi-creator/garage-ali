@@ -41,7 +41,7 @@ export default function Testimonials() {
           variants={staggerContainer}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
         >
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.id}
               variants={fadeInUp}
@@ -63,7 +63,7 @@ export default function Testimonials() {
 
               {/* Comment */}
               <p className="text-gray-300 leading-relaxed mb-6 font-medium">
-                "{testimonial.comment}"
+                &ldquo;{testimonial.comment}&rdquo;
               </p>
 
               {/* Customer Info */}

@@ -1,18 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Phone, MapPin, Clock, Star, CheckCircle } from 'lucide-react';
 import { contactInfo, businessInfo } from '@/data/contact';
-import { formatPhoneNumber, fadeInUp, fadeInLeft, fadeInRight } from '@/lib/utils';
 import backgroundImage from '@/assets/images/123.png';
 
 export default function Hero() {
   const goToAbout = () => {
     window.location.href = '/about';
-  };
-
-  const scrollToServices = () => {
-    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

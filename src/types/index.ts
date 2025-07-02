@@ -43,6 +43,16 @@ export interface CarFilter {
   bodyType?: string;
 }
 
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+  price: string;
+  duration: string;
+}
+
 export interface Testimonial {
   id: string;
   name: string;

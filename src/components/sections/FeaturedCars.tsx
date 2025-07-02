@@ -4,14 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Car,
-  Fuel, 
-  Gauge,
-  Calendar,
-  MapPin,
-  Heart,
-  ArrowRight,
-  Settings,
-  Users
+  Heart
 } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '@/lib/utils';
 import CarDetailModal from '@/components/CarDetailModal';
@@ -115,7 +108,7 @@ export default function FeaturedCars() {
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-12"
           >
-            {featuredCars.map((car, index) => (
+            {featuredCars.map((car) => (
             <motion.div
               key={car.id}
               variants={fadeInUp}
