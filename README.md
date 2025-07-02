@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auto Garage Website
+
+A modern, professional website built with Next.js for local auto garage businesses.
+
+## Features
+
+- 🚗 Professional auto garage landing page
+- 📱 Mobile-responsive design
+- 🎨 Modern UI with Tailwind CSS
+- ⚡ Fast performance with Next.js
+- 🔍 SEO optimized for local search
+- 📧 Contact forms for appointments
+- 🖼️ Service showcase and gallery
+- ⭐ Customer testimonials
+- 📍 Location and contact information
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+- **Deployment**: Ready for Vercel/Netlify
+
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js app router pages
+├── components/          # Reusable components
+│   ├── ui/             # Basic UI components
+│   ├── sections/       # Page sections (Hero, Services, etc.)
+│   └── forms/          # Contact and appointment forms
+├── lib/                # Utility functions
+├── types/              # TypeScript type definitions
+├── data/               # Static data (services, testimonials)
+└── assets/             # Images and icons
+```
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customization
 
-## Learn More
+The website is designed to be easily customizable for any auto garage:
+- Update business information in `src/data/`
+- Replace images in `public/images/`
+- Modify colors and styling in `tailwind.config.ts`
+- Add/remove services in the services data file
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site is ready to deploy on platforms like Vercel, Netlify, or any hosting service that supports Next.js.
