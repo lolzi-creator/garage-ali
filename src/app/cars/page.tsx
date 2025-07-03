@@ -51,19 +51,15 @@ export default function CarsPage() {
           setCars(data.filter((car: CarType) => car.isAvailable)); // Only show available cars
         } else {
           console.error('Failed to fetch cars, status:', response.status);
-          // Fallback to static data if API fails
-          const { cars: staticCars } = await import('@/data/cars');
-          setCars(staticCars.filter((car: CarType) => car.isAvailable));
+          const errorText = await response.text();
+          console.error('Error response:', errorText);
+          // NO STATIC DATA FALLBACK - FORCE REAL DATA ONLY
+          setCars([]);
         }
       } catch (error) {
         console.error('Error fetching cars:', error);
-        // Fallback to static data if API fails
-        try {
-          const { cars: staticCars } = await import('@/data/cars');
-          setCars(staticCars.filter((car: CarType) => car.isAvailable));
-        } catch (staticError) {
-          console.error('Error loading static cars:', staticError);
-        }
+        // NO STATIC DATA FALLBACK - FORCE REAL DATA ONLY
+        setCars([]);
       } finally {
         setLoading(false);
       }

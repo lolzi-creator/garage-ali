@@ -26,21 +26,15 @@ export default function FeaturedCars() {
           setFeaturedCars(featured);
         } else {
           console.error('Failed to fetch featured cars, status:', response.status);
-          // Fallback to static data if API fails
-          const { cars: staticCars } = await import('@/data/cars');
-          const featured = staticCars.filter((car: CarType) => car.isFeatured && car.isAvailable);
-          setFeaturedCars(featured);
+          const errorText = await response.text();
+          console.error('Error response:', errorText);
+          // NO STATIC DATA FALLBACK - FORCE REAL DATA ONLY
+          setFeaturedCars([]);
         }
       } catch (error) {
         console.error('Error fetching featured cars:', error);
-        // Fallback to static data if API fails
-        try {
-          const { cars: staticCars } = await import('@/data/cars');
-          const featured = staticCars.filter((car: CarType) => car.isFeatured && car.isAvailable);
-          setFeaturedCars(featured);
-        } catch (staticError) {
-          console.error('Error loading static featured cars:', staticError);
-        }
+        // NO STATIC DATA FALLBACK - FORCE REAL DATA ONLY
+        setFeaturedCars([]);
       }
     };
 
