@@ -146,15 +146,20 @@ export default function CarForm({ car, onClose, onSave }: CarFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    console.log('🚗 Form submitted!');
+    console.log('📝 Form data:', formData);
+    
     if (!validateForm()) {
+      console.log('❌ Form validation failed');
       return;
     }
 
+    console.log('✅ Form validation passed');
     setIsSubmitting(true);
 
     try {
       const carData: Car = {
-        id: car?.id || `car-${Date.now()}`,
+        id: car?.id || `car-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         brand: formData.brand!,
         model: formData.model!,
         year: formData.year!,
@@ -184,6 +189,9 @@ export default function CarForm({ car, onClose, onSave }: CarFormProps) {
 
       const method = car ? 'PUT' : 'POST';
       const url = car ? `/api/admin/cars/${car.id}` : '/api/admin/cars';
+      
+      console.log('📡 Sending request:', method, url);
+      console.log('📦 Car data:', carData);
 
       const response = await fetch(url, {
         method,
@@ -193,17 +201,25 @@ export default function CarForm({ car, onClose, onSave }: CarFormProps) {
         body: JSON.stringify(carData),
       });
 
+      console.log('📊 Response status:', response.status);
+      console.log('📊 Response ok:', response.ok);
+
       if (response.ok) {
         const savedCar = await response.json();
+        console.log('✅ Car saved successfully:', savedCar);
         onSave(savedCar);
       } else {
-        alert('Fehler beim Speichern des Fahrzeugs');
+        console.error('❌ Save failed:', response.status);
+        const errorText = await response.text();
+        console.error('❌ Error response:', errorText);
+        alert('Fehler beim Speichern des Fahrzeugs: ' + response.status);
       }
     } catch (error) {
-      console.error('Error saving car:', error);
-      alert('Fehler beim Speichern des Fahrzeugs');
+      console.error('❌ Network error saving car:', error);
+      alert('Fehler beim Speichern des Fahrzeugs: ' + error);
     } finally {
       setIsSubmitting(false);
+      console.log('🏁 Form submission completed');
     }
   };
 

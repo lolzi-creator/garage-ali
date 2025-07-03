@@ -10,15 +10,29 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white pt-24 md:pt-32 pb-0 overflow-hidden min-h-screen flex items-center">
-      {/* Modern Background */}
+    <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white pt-40 md:pt-44 pb-0 overflow-hidden min-h-screen flex items-center">
+      {/* Video Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black opacity-80"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${backgroundImage.src})` }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+                 <video
+           className="absolute inset-0 w-full h-full object-cover"
+           autoPlay
+           muted
+           loop
+           playsInline
+           poster={backgroundImage.src}
+         >
+           <source src="/images/1.mp4" type="video/mp4" />
+           Your browser does not support the video tag.
+         </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
+      </div>
+
+      {/* Yellow Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -31,14 +45,11 @@ export default function Hero() {
               transition={{ duration: 0.8 }}
               className="space-y-6"
             >
-              <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium">Premium seit {businessInfo.established} • {businessInfo.vehiclesSold} Verkaufte Fahrzeuge</span>
-              </div>
+
 
               <h1 className="text-4xl md:text-6xl xl:text-8xl font-black leading-none tracking-tight">
                 <span className="block">PREMIUM</span>
-                <span className="block bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">AUTOMOBILES</span>
+                <span className="block bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent">AUTOMOBILES</span>
                 <span className="block text-2xl md:text-3xl xl:text-4xl text-gray-400 font-light mt-2">Lengnau • Schweiz</span>
               </h1>
 
@@ -57,7 +68,7 @@ export default function Hero() {
             >
               <button
                 onClick={() => window.location.href = '/cars'}
-                className="group relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all transform hover:scale-105 shadow-2xl border border-orange-400/30"
+                className="group relative overflow-hidden bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all transform hover:scale-105 shadow-2xl border border-yellow-400/30"
               >
                 <span className="relative z-10">FAHRZEUGE ENTDECKEN</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
@@ -97,7 +108,7 @@ export default function Hero() {
                   <div className="text-sm text-gray-400 uppercase tracking-wide mb-1">Telefon</div>
                   <a 
                     href={`tel:${contactInfo.phone}`}
-                    className="text-xl font-bold text-white hover:text-orange-400 transition-colors"
+                    className="text-xl font-bold text-white hover:text-yellow-400 transition-colors"
                   >
                     {contactInfo.phone}
                   </a>
@@ -121,7 +132,7 @@ export default function Hero() {
               <div className="mt-6 pt-6 border-t border-white/10">
                 <div className="flex items-center justify-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <div key={i} className="w-4 h-4 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"></div>
+                    <div key={i} className="w-4 h-4 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full"></div>
                   ))}
                 </div>
                 <p className="text-center text-gray-400 text-sm mt-2">

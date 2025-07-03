@@ -134,7 +134,7 @@ export default function CarDetailModal({ car, isOpen, onClose }: CarDetailModalP
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, carImages.length, onClose]);
+  }, [isOpen, carImages.length, onClose, car]);
 
   return (
     <AnimatePresence>

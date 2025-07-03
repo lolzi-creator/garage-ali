@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { contactInfo } from "@/data/contact";
@@ -8,16 +8,17 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
   title: `${contactInfo.businessName} - Professionelle Autowerkstatt in Lengnau`,
   description: "Expertenwartung und Autoreparaturen in Lengnau. Qualifizierte Mechaniker, transparente Preise und Qualitätsarbeit. Ölwechsel, Bremsenservice, Diagnose und mehr.",
   keywords: "Autowerkstatt, Autoreparatur, Ölwechsel, Bremsenservice, Getriebe, Motorreparatur, Diagnose, Auto, Mechaniker, Lengnau, Schweiz",
   authors: [{ name: contactInfo.businessName }],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
   openGraph: {
     title: `${contactInfo.businessName} - Professionelle Autowerkstatt in Lengnau`,
     description: "Expertenwartung und Autoreparaturen mit transparenten Preisen und Qualitätsarbeit.",

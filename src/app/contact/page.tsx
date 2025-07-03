@@ -1,13 +1,14 @@
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 import Contact from '@/components/sections/Contact';
+import GoogleMap from '@/components/GoogleMap';
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-black">
       <Header />
       
-      <main className="pt-32">
+      <main className="pt-40 md:pt-44">
         <div className="container mx-auto px-4 mb-12">
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
@@ -20,6 +21,7 @@ export default function ContactPage() {
           </div>
         </div>
         <Contact />
+        <GoogleMap />
       </main>
 
       <Footer />

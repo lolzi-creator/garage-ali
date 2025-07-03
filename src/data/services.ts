@@ -2,93 +2,48 @@ import { Service } from '@/types';
 
 export const services: Service[] = [
   {
-    id: 'oil-change',
-    title: 'Ölwechsel',
-    description: 'Kompletter Ölwechsel Service mit Filterwechsel und Fahrzeuginspektion.',
+    id: 'kfz-service',
+    title: 'KFZ Service',
+    description: 'Service Arbeiten und Reparaturen aller Marken, nach Herstellervorgaben.',
     icon: 'Wrench',
-    price: 'Ab CHF 89.-',
-    duration: '30 Minuten',
+    price: 'Auf Anfrage',
+    duration: '1-3 Stunden',
     features: [
-      'Premium Motoröl',
-      'Ölfilter Wechsel',
-      'Flüssigkeitskontrolle',
-      'Batterie Test',
-      'Reifendruck Kontrolle'
+      'Wartung nach Herstellervorgaben',
+      'Reparaturen aller Marken',
+      'Original-Ersatzteile',
+      'Professionelle Diagnose',
+      'Qualitätsgarantie'
     ]
   },
   {
-    id: 'brake-service',
-    title: 'Bremsen Service',
-    description: 'Professionelle Bremseninspektion, Reparatur und Austausch.',
-    icon: 'CircleStop',
-    price: 'Ab CHF 299.-',
+    id: 'klima-service',
+    title: 'Klima Service',
+    description: 'Kompletter Klimaanlagen-Service für optimale Funktionalität. Empfohlen alle 2 Jahre.',
+    icon: 'Snowflake',
+    price: 'Ab CHF 180.-',
     duration: '1-2 Stunden',
     features: [
-      'Bremsbeläge Wechsel',
-      'Bremsscheiben Kontrolle',
-      'Bremsflüssigkeit Prüfung',
-      'Bremszangen Service',
-      'Testfahrt'
+      'Betriebsdruck & Austrittstemperatur prüfen',
+      'Kältemittel absaugen & füllen',
+      'Vakuum erzeugen & Dichtheit prüfen',
+      'Kondensatorlüfter prüfen',
+      'Niveaukontrolle'
     ]
   },
   {
-    id: 'tire-service',
-    title: 'Reifen Service',
-    description: 'Reifenmontage, Auswuchtung, Rotation und Reparatur.',
+    id: 'reifen-service',
+    title: 'Reifenservice',
+    description: 'Autoreifen sind die entscheidende Verbindung Ihres Fahrzeugs mit der Strasse. Professioneller Service für beste Sicherheit.',
     icon: 'CircleDot',
-    price: 'Ab CHF 45.-',
-    duration: '45 Minuten',
+    price: 'Ab CHF 50.-',
+    duration: '30-60 Min',
     features: [
-      'Reifen Montage & Auswuchtung',
-      'Reifen Rotation',
-      'Platten Reparatur',
-      'Druckkontrolle',
-      'Spureinstellung'
-    ]
-  },
-  {
-    id: 'engine-diagnostics',
-    title: 'Motor Diagnose',
-    description: 'Moderne Computer-Diagnose zur Erkennung von Motorproblemen.',
-    icon: 'Search',
-    price: 'Ab CHF 150.-',
-    duration: '1 Stunde',
-    features: [
-      'Computer Diagnose',
-      'Fehlercode Analyse',
-      'Leistungstest',
-      'Sensor Kontrolle',
-      'Detaillierter Bericht'
-    ]
-  },
-  {
-    id: 'ac-service',
-    title: 'Klima Service',
-    description: 'Klimaanlagen Inspektion, Reparatur und Befüllung.',
-    icon: 'Snowflake',
-    price: 'Ab CHF 120.-',
-    duration: '1 Stunde',
-    features: [
-      'Klimaanlage Inspektion',
-      'Kältemittel Auffüllung',
-      'Leckage Erkennung',
-      'Filter Wechsel',
-      'Leistungstest'
-    ]
-  },
-  {
-    id: 'transmission-service',
-    title: 'Getriebe Service',
-    description: 'Komplette Getriebe Wartung und Reparatur.',
-    icon: 'Cog',
-    price: 'Ab CHF 350.-',
-    duration: '2-3 Stunden',
-    features: [
-      'Getriebeöl Wechsel',
-      'Filter Austausch',
-      'System Kontrolle',
-      'Leistungstest',
-      'Diagnose Scan'
+      'Reifenwechsel und Montage',
+      'Auswuchten und Kontrolle',
+      'Kompletträder-Einlagerung',
+      'Reifenberatung',
+      'Sicherheitsprüfung'
     ]
   }
 ]; 

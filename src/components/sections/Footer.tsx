@@ -1,5 +1,6 @@
-import { Phone, MapPin, Clock, Mail, Facebook, Instagram } from 'lucide-react';
+import { Phone, MapPin, Mail, Facebook, Instagram } from 'lucide-react';
 import { contactInfo, businessInfo } from '@/data/contact';
+import SmallMap from '@/components/SmallMap';
 
 export default function Footer() {
   return (
@@ -83,28 +84,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Business Hours */}
-          <div className="space-y-6">
-            <h4 className="text-xl font-bold mb-6 text-white uppercase tracking-wide">ÖFFNUNGSZEITEN</h4>
-            <div className="space-y-3">
-              {Object.entries(contactInfo.hours).map(([day, hours]) => (
-                <div key={day} className="flex justify-between items-center p-3 bg-gray-900/50 rounded-xl border border-gray-800">
-                  <span className="text-gray-300 font-medium">{day}</span>
-                  <span className={hours === 'Geschlossen' ? 'text-red-400 font-bold' : 'text-white font-bold'}>
-                    {hours}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="pt-4 border-t border-gray-800">
-              <div className="flex items-center gap-3 text-sm">
-                <div className="w-8 h-8 bg-gray-700 border border-gray-600 rounded-lg flex items-center justify-center">
-                  <Clock className="w-4 h-4 text-gray-300" />
-                </div>
-                <span className="text-gray-300 font-medium">Termine nach Vereinbarung möglich</span>
-              </div>
-            </div>
-          </div>
+          {/* Small Map */}
+          <SmallMap />
         </div>
 
         {/* Bottom Bar */}

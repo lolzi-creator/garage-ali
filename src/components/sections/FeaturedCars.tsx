@@ -19,7 +19,7 @@ export default function FeaturedCars() {
   useEffect(() => {
     const fetchFeaturedCars = async () => {
       try {
-        const response = await fetch('/api/admin/cars');
+        const response = await fetch('/api/cars/featured');
         if (response.ok) {
           const data = await response.json();
           const featured = data.filter((car: CarType) => car.isFeatured && car.isAvailable);
@@ -75,10 +75,11 @@ export default function FeaturedCars() {
 
   return (
     <section className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-      {/* Connecting Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/3 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/3 rounded-full blur-3xl"></div>
+      {/* Red Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-rose-600 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-red-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -91,7 +92,7 @@ export default function FeaturedCars() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-            <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Premium</span> Auswahl
+            <span className="bg-gradient-to-r from-red-400 via-red-500 to-rose-600 bg-clip-text text-transparent">Premium</span> Auswahl
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Entdecken Sie unsere handverlesenen Top-Fahrzeuge. Jedes Auto wird 
@@ -112,7 +113,7 @@ export default function FeaturedCars() {
             <motion.div
               key={car.id}
               variants={fadeInUp}
-              className="bg-gray-900/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl md:rounded-3xl shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 overflow-hidden group cursor-pointer hover:-translate-y-2 hover:border-orange-500/30"
+              className="bg-gray-900/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl md:rounded-3xl shadow-2xl hover:shadow-red-500/20 transition-all duration-300 overflow-hidden group cursor-pointer hover:-translate-y-2 hover:border-red-500/30"
               onClick={() => openModal(car)}
             >
               {/* Mobile Compact Layout */}
@@ -128,7 +129,7 @@ export default function FeaturedCars() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
                   {car.isFeatured && (
                     <div className="absolute top-1 left-1">
-                      <span className="bg-orange-500 text-white px-1 py-0.5 rounded text-xs font-bold">
+                      <span className="bg-red-500 text-white px-1 py-0.5 rounded text-xs font-bold">
                         TOP
                       </span>
                     </div>
@@ -147,7 +148,7 @@ export default function FeaturedCars() {
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <div className="text-lg font-black text-orange-400">
+                    <div className="text-lg font-black bg-gradient-to-r from-red-400 to-rose-500 bg-clip-text text-transparent">
                       {formatPrice(car.price)}
                     </div>
                     <button 
@@ -155,7 +156,7 @@ export default function FeaturedCars() {
                         e.stopPropagation();
                         openModal(car);
                       }}
-                      className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-3 py-1 rounded-lg text-xs font-bold"
+                      className="bg-gradient-to-r from-red-500 to-rose-600 text-white px-3 py-1 rounded-lg text-xs font-bold"
                     >
                       DETAILS
                     </button>
@@ -191,7 +192,7 @@ export default function FeaturedCars() {
                   <div className="text-gray-300 text-sm">{car.model}</div>
                 </div>
                 
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/10 to-red-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               {/* Car Details */}
@@ -232,7 +233,7 @@ export default function FeaturedCars() {
                       </span>
                     ))}
                     {car.features.length > 3 && (
-                      <span className="text-orange-400 text-xs font-medium">
+                      <span className="text-red-400 text-xs font-medium">
                         +{car.features.length - 3}
                       </span>
                     )}
@@ -256,7 +257,7 @@ export default function FeaturedCars() {
                       e.stopPropagation();
                       openModal(car);
                     }}
-                    className="w-full group relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 px-6 rounded-2xl font-bold text-sm uppercase tracking-wide transition-all shadow-xl"
+                    className="w-full group relative overflow-hidden bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white py-3 px-6 rounded-2xl font-bold text-sm uppercase tracking-wide transition-all shadow-xl"
                   >
                     <span className="relative z-10">DETAILS ANSEHEN</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
@@ -268,18 +269,13 @@ export default function FeaturedCars() {
             ))}
           </motion.div>
         ) : (
-          <div className="text-center py-12">
+          <div className="text-center py-16">
             <Car className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Keine Featured-Fahrzeuge verfügbar
-            </h3>
-            <p className="text-gray-400">
-              Derzeit sind keine Fahrzeuge als Featured markiert.
-            </p>
+            <p className="text-gray-400 text-lg">Keine Featured-Fahrzeuge verfügbar</p>
           </div>
         )}
 
-        {/* View All CTA */}
+        {/* CTA Section */}
         <motion.div
           initial="initial"
           whileInView="animate"
@@ -289,9 +285,10 @@ export default function FeaturedCars() {
         >
           <button
             onClick={() => window.location.href = '/cars'}
-            className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-12 py-5 rounded-2xl font-bold text-xl transition-all transform hover:scale-105 shadow-2xl border border-orange-400/30"
+            className="group relative overflow-hidden bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all transform hover:scale-105 shadow-2xl"
           >
-            🚗 Alle Fahrzeuge entdecken
+            <span className="relative z-10">ALLE FAHRZEUGE ANSEHEN</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
           </button>
         </motion.div>
       </div>

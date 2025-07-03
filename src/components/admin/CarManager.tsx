@@ -33,15 +33,36 @@ export default function CarManager({ onLogout }: CarManagerProps) {
 
   const fetchCars = async () => {
     try {
-      const response = await fetch('/api/admin/cars');
+      console.log('🚗 Starting fresh car fetch...');
+      const apiUrl = '/api/admin/cars';
+      console.log('📍 Fetching from:', apiUrl);
+      
+      const response = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache'
+        }
+      });
+      
+      console.log('📊 Response status:', response.status);
+      console.log('📊 Response ok:', response.ok);
+      
       if (response.ok) {
         const data = await response.json();
+        console.log('✅ Cars received:', data.length, 'cars');
         setCars(data);
+        console.log('✅ State updated successfully');
+      } else {
+        console.error('❌ API Error:', response.status, response.statusText);
+        const errorText = await response.text();
+        console.error('❌ Error body:', errorText);
       }
     } catch (error) {
-      console.error('Error fetching cars:', error);
+      console.error('❌ Network Error:', error);
     } finally {
       setIsLoading(false);
+      console.log('🏁 Fetch completed');
     }
   };
 
