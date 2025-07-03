@@ -7,6 +7,11 @@ export const dynamic = 'force-dynamic';
 // GET /api/cars - Get all available cars with optional filtering
 export async function GET(request: NextRequest) {
   try {
+    console.log('Cars API called at:', new Date().toISOString());
+    console.log('Environment check:');
+    console.log('- Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Set' : 'Missing');
+    console.log('- Supabase Key:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'Set' : 'Missing');
+    
     const { searchParams } = new URL(request.url);
     
     // Parse query parameters for filtering
@@ -46,16 +51,28 @@ export async function GET(request: NextRequest) {
       filters.bodyType = searchParams.get('bodyType')!;
     }
 
+    console.log('Filters applied:', filters);
+    console.log('Calling CarService...');
+
     // If any filters are applied, use search, otherwise get all cars
     const cars = Object.keys(filters).length > 0 
       ? await CarService.searchCars(filters)
       : await CarService.getAllCars();
     
+    console.log('Cars fetched successfully, count:', cars.length);
     return NextResponse.json(cars);
   } catch (error) {
-    console.error('Error fetching cars:', error);
+    console.error('Detailed error in cars API:', error);
+    console.error('Error name:', error instanceof Error ? error.name : 'Unknown');
+    console.error('Error message:', error instanceof Error ? error.message : error);
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack');
+    
     return NextResponse.json(
-      { error: 'Failed to fetch cars' },
+      { 
+        error: 'Failed to fetch cars',
+        details: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: new Date().toISOString()
+      },
       { status: 500 }
     );
   }
