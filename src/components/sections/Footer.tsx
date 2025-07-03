@@ -95,9 +95,9 @@ export default function Footer() {
               © {new Date().getFullYear()} AUTO CHECKPOINT GARAGE ALI. Alle Rechte vorbehalten.
             </div>
             <div className="flex gap-8 text-sm">
-              <a href="#" className="text-gray-500 hover:text-orange-400 transition-colors font-medium">DATENSCHUTZ</a>
-              <a href="#" className="text-gray-500 hover:text-orange-400 transition-colors font-medium">IMPRESSUM</a>
-              <a href="#" className="text-gray-500 hover:text-orange-400 transition-colors font-medium">AGB</a>
+              <a href="/datenschutz" className="text-gray-500 hover:text-orange-400 transition-colors font-medium">DATENSCHUTZ</a>
+              <a href="/impressum" className="text-gray-500 hover:text-orange-400 transition-colors font-medium">IMPRESSUM</a>
+              <a href="/agb" className="text-gray-500 hover:text-orange-400 transition-colors font-medium">AGB</a>
             </div>
           </div>
         </div>
