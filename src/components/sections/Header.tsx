@@ -14,10 +14,12 @@ export default function Header() {
   // Prevent background scrolling when menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      // Prevent scrolling
+      // Store current scroll position
+      const scrollY = window.scrollY;
+      // Prevent background scrolling but allow menu scrolling
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
-      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.top = `-${scrollY}px`;
       document.body.style.width = '100%';
     } else {
       // Restore scrolling
@@ -54,24 +56,30 @@ export default function Header() {
     return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Contact Info Bar */}
-      <div className="bg-gradient-to-r from-red-600 via-blue-500 via-yellow-500 to-blue-600 text-white py-2 px-4">
+      <div className="bg-gradient-to-r from-red-600 via-blue-500 via-yellow-500 to-blue-600 text-white py-2 px-2 sm:px-4">
         <div className="container mx-auto">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-4 md:gap-6">
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-white" />
-                <a href={`tel:${contactInfo.phone}`} className="hover:text-yellow-200 transition-colors font-medium">
-                  {contactInfo.phone}
-                </a>
-              </div>
-              <div className="hidden md:flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-white" />
-                <span className="text-white/90">
-                  {contactInfo.address.street}, {contactInfo.address.zipCode} {contactInfo.address.city}
+          <div className="flex items-center justify-between text-sm overflow-hidden">
+            {/* Phone Number - Always visible on left */}
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <Phone className="w-4 h-4 text-white" />
+              <a href={`tel:${contactInfo.phone}`} className="hover:text-yellow-200 transition-colors font-medium whitespace-nowrap">
+                {contactInfo.phone}
+              </a>
+            </div>
+            
+            {/* Address - Show on mobile right, desktop center */}
+            <div className="flex items-center gap-2 min-w-0 flex-1 justify-end sm:justify-center">
+              <div className="flex items-center gap-2 min-w-0">
+                <MapPin className="w-4 h-4 text-white flex-shrink-0" />
+                <span className="text-white/90 truncate text-xs sm:text-sm">
+                  <span className="hidden sm:inline">{contactInfo.address.street}, </span>
+                  {contactInfo.address.zipCode} {contactInfo.address.city}
                 </span>
               </div>
             </div>
-            <div className="hidden lg:block text-white/80 text-xs">
+            
+            {/* Premium Services - Desktop only */}
+            <div className="hidden lg:block text-white/80 text-xs whitespace-nowrap flex-shrink-0">
               ⭐ <span className="font-bold">NEU:</span> Premium Services • MFK • Klima • Aufbereitung
             </div>
           </div>
@@ -169,7 +177,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-xl"
+            className="lg:hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-xl overflow-y-auto"
           >
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
@@ -196,9 +204,9 @@ export default function Header() {
               />
             </div>
 
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full overflow-y-auto">
               {/* Close Button */}
-              <div className="flex justify-end p-6">
+              <div className="flex justify-end p-6 flex-shrink-0">
                 <motion.button
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
@@ -212,8 +220,8 @@ export default function Header() {
               </div>
 
               {/* Navigation */}
-              <div className="flex-1 flex items-center justify-center">
-                <nav className="text-center space-y-8">
+              <div className="flex-1 flex items-center justify-center py-8 min-h-0">
+                <nav className="text-center space-y-8 w-full max-w-sm">
                   {/* Logo */}
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
@@ -223,8 +231,8 @@ export default function Header() {
                   >
                     <motion.div 
                       className="w-20 h-20 mx-auto mb-4"
-                      initial={{ rotate: -90, scale: 0 }}
-                      animate={{ rotate: -90, scale: 1 }}
+                      initial={{ rotate: 180, scale: 0 }}
+                      animate={{ rotate: 90, scale: 1 }}
                       transition={{ duration: 0.4, delay: 0.1 }}
                     >
                       <img 
@@ -232,7 +240,7 @@ export default function Header() {
                         alt="Auto Checkpoint Garage Ali" 
                         className="w-full h-full object-contain hover:animate-spin transition-transform"
                         loading="eager"
-                        style={{ transform: 'rotate(-90deg)' }}
+                        style={{ transform: 'rotate(180deg)' }}
                       />
                     </motion.div>
                     <motion.h2 
@@ -319,9 +327,9 @@ export default function Header() {
                     className="mt-12 pt-8 border-t border-white/20"
                   >
                     <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                      <p className="text-yellow-400 font-bold text-lg mb-2">032 530 39 99</p>
-                      <p className="text-gray-300 text-sm">Solothurnstrasse 92</p>
-                      <p className="text-gray-300 text-sm">2543 Lengnau</p>
+                      <p className="text-yellow-400 font-bold text-lg mb-2">{contactInfo.phone}</p>
+                      <p className="text-gray-300 text-sm">{contactInfo.address.street}</p>
+                      <p className="text-gray-300 text-sm">{contactInfo.address.zipCode} {contactInfo.address.city}</p>
                     </div>
                   </motion.div>
               </nav>

@@ -18,7 +18,12 @@ export default function Hero() {
           muted
           loop
           playsInline
+          preload="auto"
           poster="/images/test2.jpg"
+          onEnded={(e) => {
+            e.currentTarget.currentTime = 0;
+            e.currentTarget.play();
+          }}
         >
           <source src="/images/7.mp4" type="video/mp4" />
           Your browser does not support the video tag.
