@@ -28,7 +28,11 @@ export default function ImpressumPage() {
                 </div>
                 <div className="space-y-4 text-gray-300">
                   <div>
-                    <p className="text-white font-semibold text-lg">Auto Checkpoint Garage Ali</p>
+                    <p className="text-white font-semibold text-lg">
+                <span className="text-blue-400">Auto</span>{' '}
+                <span className="text-yellow-400">Checkpoint</span>{' '}
+                <span className="text-red-500">Garage</span>
+              </p>
                     <p>Einzelunternehmen</p>
                   </div>
                   <div className="flex items-start gap-3">
@@ -93,7 +97,7 @@ export default function ImpressumPage() {
                 <p className="text-gray-300 text-sm leading-relaxed">
                   Die Inhalte und Werke auf dieser Website unterliegen dem schweizerischen Urheberrecht. 
                   Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
-                  Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung von Auto Checkpoint Garage Ali.
+                  Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung von Auto Checkpoint Garage.
                 </p>
               </div>
 

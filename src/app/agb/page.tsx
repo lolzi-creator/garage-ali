@@ -28,7 +28,7 @@ export default function AGBPage() {
                 </div>
                 <p className="text-gray-300 leading-relaxed">
                   Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Geschäftsbeziehungen 
-                  zwischen Auto Checkpoint Garage Ali und unseren Kunden.
+                  zwischen Auto Checkpoint Garage und unseren Kunden.
                 </p>
               </div>
 
@@ -39,7 +39,7 @@ export default function AGBPage() {
                   <h3 className="text-xl font-bold text-white">§1 Geltungsbereich</h3>
                 </div>
                 <div className="space-y-3 text-gray-300 text-sm">
-                  <p>1.1 Diese AGB gelten für alle Verträge zwischen Auto Checkpoint Garage Ali und dem Kunden.</p>
+                  <p>1.1 Diese AGB gelten für alle Verträge zwischen Auto Checkpoint Garage und dem Kunden.</p>
                   <p>1.2 Abweichende Bedingungen des Kunden werden nur bei ausdrücklicher schriftlicher Zustimmung anerkannt.</p>
                   <p>1.3 Sollten einzelne Bestimmungen unwirksam sein, bleibt die Gültigkeit der übrigen Bestimmungen unberührt.</p>
                 </div>
@@ -160,7 +160,11 @@ export default function AGBPage() {
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-white mb-4">Kontakt</h3>
                   <div className="text-gray-300 space-y-1">
-                    <p className="text-white font-medium">Auto Checkpoint Garage Ali</p>
+                    <p className="text-white font-medium">
+                  <span className="text-blue-400">Auto</span>{' '}
+                  <span className="text-yellow-400">Checkpoint</span>{' '}
+                  <span className="text-red-500">Garage</span>
+                </p>
                     <p>Solothurnstrasse 92, 2543 Lengnau</p>
                     <p>Tel: 032 530 39 99</p>
                     <p>E-Mail: info@autocheckpoint-ali.ch</p>

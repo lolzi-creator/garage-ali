@@ -21,7 +21,7 @@ export const services: Service[] = [
     title: 'Klima Service',
     description: 'Kompletter Klimaanlagen-Service für optimale Funktionalität. Empfohlen alle 2 Jahre.',
     icon: 'Snowflake',
-    price: 'Ab CHF 180.-',
+    price: 'Ab CHF 100.-',
     duration: '1-2 Stunden',
     features: [
       'Betriebsdruck & Austrittstemperatur prüfen',

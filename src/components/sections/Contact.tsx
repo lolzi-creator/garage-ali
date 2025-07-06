@@ -6,6 +6,12 @@ import { contactInfo, businessInfo } from '@/data/contact';
 import { fadeInUp, fadeInLeft, fadeInRight } from '@/lib/utils';
 
 export default function Contact() {
+  // WhatsApp helper function
+  const createWhatsAppLink = (message: string) => {
+    const phoneNumber = '+41325303999'; // Swiss format: 032 530 39 99 -> +41 32 530 39 99
+    return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  };
+
   return (
     <section id="contact" className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden -mt-16 pt-36">
       {/* Modern Background */}
@@ -130,6 +136,14 @@ export default function Contact() {
               </div>
               
               <div className="space-y-4">
+                <a
+                  href={createWhatsAppLink('Hallo! Ich möchte gerne einen Termin vereinbaren. Können Sie mir weiterhelfen?')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-green-500 hover:bg-green-600 text-white py-4 px-6 rounded-xl font-bold text-center transition-colors"
+                >
+                  💬 WhatsApp Nachricht
+                </a>
                 <a
                   href={`tel:${contactInfo.phone}`}
                   className="block w-full bg-orange-500 hover:bg-orange-600 text-white py-4 px-6 rounded-xl font-bold text-center transition-colors"

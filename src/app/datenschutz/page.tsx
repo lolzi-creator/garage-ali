@@ -27,7 +27,7 @@ export default function DatenschutzPage() {
                   <h2 className="text-2xl font-bold text-white">Datenschutzerklärung</h2>
                 </div>
                 <p className="text-gray-300 leading-relaxed">
-                  Auto Checkpoint Garage Ali nimmt den Schutz Ihrer persönlichen Daten sehr ernst. 
+                  Auto Checkpoint Garage nimmt den Schutz Ihrer persönlichen Daten sehr ernst. 
                   Diese Datenschutzerklärung informiert Sie darüber, wie wir Ihre Daten erheben, 
                   verarbeiten und schützen.
                 </p>
@@ -40,7 +40,11 @@ export default function DatenschutzPage() {
                   <h3 className="text-xl font-bold text-white">Verantwortliche Stelle</h3>
                 </div>
                 <div className="text-gray-300 space-y-2">
-                  <p className="text-white font-medium">Auto Checkpoint Garage Ali</p>
+                  <p className="text-white font-medium">
+                  <span className="text-blue-400">Auto</span>{' '}
+                  <span className="text-yellow-400">Checkpoint</span>{' '}
+                  <span className="text-red-500">Garage</span>
+                </p>
                   <p>Solothurnstrasse 92, 2543 Lengnau, Schweiz</p>
                   <p>Tel: 032 530 39 99</p>
                   <p>E-Mail: info@autocheckpoint-ali.ch</p>

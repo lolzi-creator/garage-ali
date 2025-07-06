@@ -9,7 +9,6 @@ import {
   Snowflake, 
   Cog,
   Clock,
-  DollarSign,
   CheckCircle
 } from 'lucide-react';
 import { services } from '@/data/services';
@@ -25,6 +24,13 @@ const iconMap = {
 };
 
 export default function Services() {
+  // WhatsApp helper function
+  const createWhatsAppLink = (serviceName: string) => {
+    const phoneNumber = '+41764330475'; // WhatsApp number: +41 76 433 04 75
+    const message = `Hallo! Ich interessiere mich für den Service: ${serviceName}. Können Sie mir weitere Informationen geben?`;
+    return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  };
+
   return (
     <section id="services" className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-gray-800">
       {/* Blue Animated Background */}
@@ -50,6 +56,7 @@ export default function Services() {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Professionelle Automobile Services mit höchsten Qualitätsstandards. 
             Transparente Preise, modernste Technik, erfahrene Spezialisten.
+            Bei jeder Reparatur stellen wir Ihnen selbstverständlich ein Ersatzfahrzeug zur Verfügung.
           </p>
         </motion.div>
 
@@ -85,7 +92,6 @@ export default function Services() {
                   {/* Price and Duration */}
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-1 text-blue-400 font-bold">
-                      <DollarSign className="w-4 h-4" />
                       <span>{service.price}</span>
                     </div>
                     <div className="flex items-center gap-1 text-gray-400">
@@ -110,10 +116,15 @@ export default function Services() {
                   )}
 
                   {/* CTA Button */}
-                  <button className="w-full group relative overflow-hidden bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white py-3 px-6 rounded-2xl font-bold transition-all mt-6 shadow-xl">
-                    <span className="relative z-10">SERVICE BUCHEN</span>
+                  <a 
+                    href={createWhatsAppLink(service.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full group relative overflow-hidden bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white py-3 px-6 rounded-2xl font-bold transition-all mt-6 shadow-xl block text-center"
+                  >
+                    <span className="relative z-10">💬 VIA WHATSAPP BUCHEN</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                  </button>
+                  </a>
                 </div>
               </motion.div>
             );
@@ -135,12 +146,20 @@ export default function Services() {
               Kontaktieren Sie uns, um Ihre spezifischen Bedürfnisse zu besprechen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white px-8 py-3 rounded-2xl font-bold transition-all">
-                Kostenvoranschlag
-              </button>
-              <button className="border-2 border-white/30 text-white hover:bg-white hover:text-black px-8 py-3 rounded-2xl font-bold transition-all backdrop-blur-sm">
+              <a
+                href={createWhatsAppLink('Kostenvoranschlag für spezielle Services')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-blue-500 to-sky-600 hover:from-blue-600 hover:to-sky-700 text-white px-8 py-3 rounded-2xl font-bold transition-all"
+              >
+💬 WhatsApp Kostenvoranschlag
+              </a>
+              <a 
+                href="tel:032 530 39 99"
+                className="border-2 border-white/30 text-white hover:bg-white hover:text-black px-8 py-3 rounded-2xl font-bold transition-all backdrop-blur-sm"
+              >
                 Jetzt Anrufen
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>

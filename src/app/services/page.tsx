@@ -13,7 +13,6 @@ import {
   CheckCircle,
   Sparkles,
   FileCheck,
-  Wind,
   Phone,
   ArrowRight,
   Star,
@@ -32,6 +31,13 @@ export default function ServicesPage() {
 
   const toggleService = (index: number) => {
     setExpandedService(expandedService === index ? null : index);
+  };
+
+  // WhatsApp helper function
+  const createWhatsAppLink = (serviceName: string) => {
+    const phoneNumber = '+41764330475'; // WhatsApp number: +41 76 433 04 75
+    const message = `Hallo! Ich interessiere mich für den Service: ${serviceName}. Können Sie mir weitere Informationen geben?`;
+    return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
   };
 
   const mainServices = [
@@ -57,7 +63,7 @@ export default function ServicesPage() {
       icon: <Snowflake className="w-6 h-6" />,
       title: "Klima Service",
       description: "Kompletter Klimaanlagen-Service. Empfohlen alle 2 Jahre.",
-      price: "Ab CHF 180.-",
+      price: "Ab CHF 100.-",
       duration: "1-2 Std",
       features: ["Betriebsdruck prüfen", "Kältemittel Service", "Dichtheitsprüfung", "Kondensatorlüfter"],
       color: "cyan"
@@ -94,15 +100,15 @@ export default function ServicesPage() {
   const additionalServices = [
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Schadenmanagement",
-      description: "Kompetente Beratung im Schadenfall. Direkte Kommunikation mit Versicherungen und Partnerbetrieben.",
-      features: ["Schadenberatung", "Versicherungsabwicklung", "Partnerbetrieb-Koordination"]
+      title: "Versicherungsservice",
+      description: "Komplette Abwicklung mit Ihrer Versicherung. Wir kümmern uns um alle Formalitäten und Schadensmeldungen.",
+      features: ["Schadensmeldung", "Versicherungsabwicklung", "Kostenvoranschlag", "Direktabrechnung"]
     },
     {
-      icon: <Wind className="w-8 h-8" />,
-      title: "Scheiben & Kunststoff",
-      description: "Fachmännischer Austausch von Windschutzscheiben nach Herstellerrichtlinien.",
-      features: ["Scheibenaustausch", "Kunststoffreparaturen", "Originalteile"]
+      icon: <FileCheck className="w-8 h-8" />,
+      title: "Gutachten & Bewertung",
+      description: "Professionelle Fahrzeugbewertung und Gutachten für Versicherung, Verkauf oder Kauf.",
+      features: ["Fahrzeugbewertung", "Schadensgutachten", "Kaufberatung", "Wertgutachten"]
     }
   ];
 
@@ -232,10 +238,15 @@ export default function ServicesPage() {
                         ))}
                       </div>
                       
-                      <button className={`w-full mt-6 bg-gradient-to-r ${colors.bg} text-white py-3 px-4 rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 flex items-center justify-center gap-2 group`}>
-                        Service anfragen
+                      <a 
+                        href={createWhatsAppLink(service.title)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                                                 className={`w-full mt-6 bg-gradient-to-r ${colors.bg} text-white py-3 px-4 rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 flex items-center justify-center gap-2 group`}
+                       >
+                         💬 WhatsApp Nachricht
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      </a>
                     </div>
                   </motion.div>
                 );
@@ -319,10 +330,15 @@ export default function ServicesPage() {
                             </div>
                             
                             {/* CTA Button */}
-                            <button className={`w-full bg-gradient-to-r ${colors.bg} text-white py-2.5 px-4 rounded-lg font-medium text-sm flex items-center justify-center gap-2 group`}>
-                              Service anfragen
+                            <a 
+                              href={createWhatsAppLink(service.title)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`w-full bg-gradient-to-r ${colors.bg} text-white py-2.5 px-4 rounded-lg font-medium text-sm flex items-center justify-center gap-2 group`}
+                            >
+💬 WhatsApp Nachricht
                               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </a>
                           </div>
                         </motion.div>
                       )}
@@ -330,6 +346,58 @@ export default function ServicesPage() {
                   </motion.div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Additional Services */}
+        <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-gray-900 to-black">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="text-center mb-16"
+            >
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
+                Versicherte <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Services</span>
+              </h2>
+              <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+                Spezialisierte Dienstleistungen für besondere Anforderungen
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {additionalServices.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  variants={fadeInUp}
+                  transition={{ delay: index * 0.2 }}
+                  className="bg-gray-900/50 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-blue-500/30 shadow-lg hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
+                >
+                  <div className="flex items-start gap-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                      {service.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                      <p className="text-gray-300 mb-4 leading-relaxed">{service.description}</p>
+                      <div className="space-y-2">
+                        {service.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center gap-3">
+                            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <span className="text-gray-300 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -381,7 +449,7 @@ export default function ServicesPage() {
                        playsInline
                        poster="/images/video-poster.jpg"
                      >
-                       <source src="/images/3.MP4" type="video/mp4" />
+                       <source src="/images/5.mp4" type="video/mp4" />
                        Your browser does not support the video tag.
                      </video>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
@@ -450,7 +518,7 @@ export default function ServicesPage() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Wrench className="w-4 h-4 text-blue-400" />
-                        <span>500+ Reparaturen</span>
+                        <span>10+ Reparaturen</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Shield className="w-4 h-4 text-blue-400" />
@@ -460,58 +528,6 @@ export default function ServicesPage() {
                   </div>
                 </div>
               </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Additional Services */}
-        <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-gray-900 to-black">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              className="text-center mb-16"
-            >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
-                Zusätzliche <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Services</span>
-              </h2>
-              <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-                Spezialisierte Dienstleistungen für besondere Anforderungen
-              </p>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {additionalServices.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true }}
-                  variants={fadeInUp}
-                  transition={{ delay: index * 0.2 }}
-                  className="bg-gray-900/50 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-blue-500/30 shadow-lg hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
-                >
-                  <div className="flex items-start gap-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                      {service.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                      <p className="text-gray-300 mb-4 leading-relaxed">{service.description}</p>
-                      <div className="space-y-2">
-                        {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                            <span className="text-gray-300 text-sm">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
             </div>
           </div>
         </section>

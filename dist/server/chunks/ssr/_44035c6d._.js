@@ -549,7 +549,7 @@ const services = [
         title: 'Klima Service',
         description: 'Kompletter Klimaanlagen-Service für optimale Kühlung. Empfohlen alle 2 Jahre.',
         icon: 'Snowflake',
-        price: 'Ab CHF 180.-',
+        price: 'Ab CHF 100.-',
         duration: '1-1.5 Stunden',
         features: [
             'Klima Betriebsdruck & Austrittstemperatur prüfen',

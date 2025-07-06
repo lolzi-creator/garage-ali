@@ -180,12 +180,12 @@ export default function CarsPage() {
       <main className="relative pt-40 md:pt-44 pb-20">
         <div className="container mx-auto px-4">
           {/* Hero Section */}
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={fadeInUp}
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={fadeInUp}
             className="text-center mb-16"
-          >
+            >
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -210,12 +210,12 @@ export default function CarsPage() {
           </motion.div>
 
           {/* Search & Filter Section */}
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={fadeInUp}
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={fadeInUp}
             className="bg-gray-900/30 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 mb-12 shadow-2xl"
-          >
+            >
             <div className="flex flex-col lg:flex-row gap-6">
               {/* Search Input */}
               <div className="flex-1 relative">
@@ -335,7 +335,7 @@ export default function CarsPage() {
                 </div>
               </motion.div>
             )}
-          </motion.div>
+            </motion.div>
 
           {/* Results Counter */}
           <motion.div
@@ -352,12 +352,12 @@ export default function CarsPage() {
           </motion.div>
 
           {/* Cars Grid */}
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={staggerContainer}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
             {filteredCars.map((car) => (
               <motion.div
                 key={car.id}
@@ -367,66 +367,66 @@ export default function CarsPage() {
                 onClick={() => openModal(car)}
               >
                 <div className="bg-gray-900/30 backdrop-blur-xl border border-gray-700/50 rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 hover:border-red-500/30 hover:shadow-red-500/20 h-full flex flex-col">
-                  {/* Mobile Compact Layout */}
-                  <div className="md:hidden flex h-32">
-                    {/* Compact Image */}
-                    <div className="relative w-1/3 bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden">
-                      <div 
+                {/* Mobile Compact Layout */}
+                <div className="md:hidden flex h-32">
+                  {/* Compact Image */}
+                  <div className="relative w-1/3 bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden">
+                    <div 
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
-                        style={{
-                          backgroundImage: `url(${getCarImage(car)})`
-                        }}
+                      style={{
+                        backgroundImage: `url(${getCarImage(car)})`
+                      }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
-                      {car.isFeatured && (
-                        <div className="absolute top-1 left-1">
+                    {car.isFeatured && (
+                      <div className="absolute top-1 left-1">
                           <span className="bg-red-500 text-white px-2 py-0.5 rounded text-xs font-bold">
-                            TOP
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Compact Info */}
-                    <div className="flex-1 p-3 flex flex-col justify-between">
-                      <div>
-                        <h3 className="text-white font-bold text-sm mb-1">
-                          {car.brand} {car.model}
-                        </h3>
-                        <p className="text-gray-400 text-xs mb-2">
-                          {car.year} • {formatMileage(car.mileage)} • {car.fuelType}
-                        </p>
+                          TOP
+                        </span>
                       </div>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="text-lg font-black bg-gradient-to-r from-red-400 to-rose-500 bg-clip-text text-transparent">
-                          {formatPrice(car.price)}
-                        </div>
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            openModal(car);
-                          }}
-                          className="bg-gradient-to-r from-red-500 to-rose-600 text-white px-3 py-1 rounded-lg text-xs font-bold"
-                        >
-                          DETAILS
-                        </button>
-                      </div>
-                    </div>
+                    )}
                   </div>
 
-                  {/* Desktop Full Layout */}
-                  <div className="hidden md:flex md:flex-col md:h-full">
-                    {/* Car Image */}
-                    <div className="relative h-64 overflow-hidden">
-                      <div 
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transform group-hover:scale-110 transition-transform duration-700"
-                        style={{
-                          backgroundImage: `url(${getCarImage(car)})`
+                  {/* Compact Info */}
+                  <div className="flex-1 p-3 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-white font-bold text-sm mb-1">
+                        {car.brand} {car.model}
+                      </h3>
+                      <p className="text-gray-400 text-xs mb-2">
+                        {car.year} • {formatMileage(car.mileage)} • {car.fuelType}
+                      </p>
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                        <div className="text-lg font-black bg-gradient-to-r from-red-400 to-rose-500 bg-clip-text text-transparent">
+                        {formatPrice(car.price)}
+                      </div>
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openModal(car);
                         }}
+                          className="bg-gradient-to-r from-red-500 to-rose-600 text-white px-3 py-1 rounded-lg text-xs font-bold"
+                      >
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop Full Layout */}
+                  <div className="hidden md:flex md:flex-col md:h-full">
+                  {/* Car Image */}
+                    <div className="relative h-64 overflow-hidden">
+                  <div 
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transform group-hover:scale-110 transition-transform duration-700"
+                    style={{
+                      backgroundImage: `url(${getCarImage(car)})`
+                    }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
-                      
+                  
                       {/* Status Badges */}
                       <div className="absolute top-4 left-4 flex gap-2">
                         {car.isFeatured && (
@@ -436,123 +436,123 @@ export default function CarsPage() {
                           </span>
                         )}
                         <span className="bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-white/20">
-                          {car.condition}
-                        </span>
-                      </div>
+                      {car.condition}
+                    </span>
+                  </div>
 
                       {/* Favorite Button */}
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
                         className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 transition-all border border-white/20 group/fav"
-                      >
+                    >
                         <Heart className="w-4 h-4 text-white group-hover/fav:text-red-400 transition-colors" />
-                      </button>
-                      
+                    </button>
+                  
                       {/* Car Title Overlay */}
-                      <div className="absolute bottom-4 left-4 right-4">
+                  <div className="absolute bottom-4 left-4 right-4">
                         <h3 className="text-white font-bold text-xl mb-1">
                           {car.brand} {car.model}
                         </h3>
                         <p className="text-gray-300 text-sm opacity-90">
                           {car.year} • {car.engine}
                         </p>
-                      </div>
-                      
+                  </div>
+                  
                       {/* Hover Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/10 to-red-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
+                </div>
 
-                    {/* Car Details */}
+                {/* Car Details */}
                     <div className="p-6 flex-1 flex flex-col">
-                      {/* Key Specs */}
-                      <div className="grid grid-cols-2 gap-3 mb-6">
+                  {/* Key Specs */}
+                  <div className="grid grid-cols-2 gap-3 mb-6">
                         <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-3 text-center border border-gray-700/30">
                           <div className="flex items-center justify-center mb-1">
                             <Gauge className="w-4 h-4 text-red-400 mr-1" />
                             <span className="text-white font-bold text-sm">{formatMileage(car.mileage)}</span>
                           </div>
-                          <div className="text-gray-400 text-xs">Kilometerstand</div>
-                        </div>
+                      <div className="text-gray-400 text-xs">Kilometerstand</div>
+                    </div>
                         <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-3 text-center border border-gray-700/30">
                           <div className="flex items-center justify-center mb-1">
                             <Fuel className="w-4 h-4 text-red-400 mr-1" />
                             <span className="text-white font-bold text-sm">{car.fuelType}</span>
                           </div>
-                          <div className="text-gray-400 text-xs">Kraftstoff</div>
-                        </div>
+                      <div className="text-gray-400 text-xs">Kraftstoff</div>
+                    </div>
                         <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-3 text-center border border-gray-700/30">
                           <div className="flex items-center justify-center mb-1">
                             <Settings className="w-4 h-4 text-red-400 mr-1" />
                             <span className="text-white font-bold text-sm">{car.transmission}</span>
                           </div>
-                          <div className="text-gray-400 text-xs">Getriebe</div>
-                        </div>
+                      <div className="text-gray-400 text-xs">Getriebe</div>
+                    </div>
                         <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-3 text-center border border-gray-700/30">
                           <div className="flex items-center justify-center mb-1">
                             <Calendar className="w-4 h-4 text-red-400 mr-1" />
                             <span className="text-white font-bold text-sm">{car.power} PS</span>
                           </div>
-                          <div className="text-gray-400 text-xs">Leistung</div>
-                        </div>
-                      </div>
+                      <div className="text-gray-400 text-xs">Leistung</div>
+                    </div>
+                  </div>
 
-                      {/* Features */}
-                      <div className="mb-6">
-                        <div className="flex flex-wrap gap-2">
-                          {car.features.slice(0, 3).map((feature, featureIndex) => (
-                            <span 
-                              key={featureIndex}
+                  {/* Features */}
+                  <div className="mb-6">
+                    <div className="flex flex-wrap gap-2">
+                      {car.features.slice(0, 3).map((feature, featureIndex) => (
+                        <span 
+                          key={featureIndex}
                               className="bg-gray-800/50 text-gray-300 px-3 py-1 rounded-full text-xs border border-gray-600/50"
-                            >
-                              {feature}
-                            </span>
-                          ))}
-                          {car.features.length > 3 && (
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                      {car.features.length > 3 && (
                             <span className="text-red-400 text-xs font-medium bg-red-500/10 px-2 py-1 rounded-full">
                               +{car.features.length - 3} weitere
-                            </span>
-                          )}
-                        </div>
-                      </div>
+                        </span>
+                      )}
+                    </div>
+                  </div>
 
                       {/* Price and Location */}
                       <div className="flex items-center justify-between mb-6">
-                        <div>
+                      <div>
                           <div className="text-3xl font-black bg-gradient-to-r from-red-400 to-rose-500 bg-clip-text text-transparent">
-                            {formatPrice(car.price)}
-                          </div>
+                          {formatPrice(car.price)}
+                        </div>
                           <div className="flex items-center text-gray-400 text-sm mt-1">
                             <MapPin className="w-3 h-3 mr-1" />
-                            {car.location}
+                          {car.location}
                           </div>
                         </div>
                       </div>
 
                       {/* CTA Button */}
                       <div className="mt-auto">
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            openModal(car);
-                          }}
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(car);
+                      }}
                           className="w-full group relative overflow-hidden bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white py-4 px-6 rounded-2xl font-bold text-sm uppercase tracking-wide transition-all shadow-xl hover:shadow-red-500/25"
-                        >
+                    >
                           <span className="relative z-10 flex items-center justify-center gap-2">
                             <Eye className="w-4 h-4" />
                             DETAILS ANSEHEN
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                           </span>
                           <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                        </button>
-                      </div>
-                    </div>
+                    </button>
                   </div>
+                    </div>
+                </div>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+            </motion.div>
 
           {/* No Results */}
           {!loading && filteredCars.length === 0 && (
@@ -565,17 +565,17 @@ export default function CarsPage() {
               <div className="bg-gray-900/30 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-12 max-w-md mx-auto">
                 <Car className="w-16 h-16 text-gray-500 mx-auto mb-6" />
                 <h3 className="text-2xl font-bold text-white mb-4">
-                  Keine Fahrzeuge gefunden
-                </h3>
+                Keine Fahrzeuge gefunden
+              </h3>
                 <p className="text-gray-400 mb-8 leading-relaxed">
                   Versuchen Sie es mit anderen Suchkriterien oder Filtern, um das perfekte Fahrzeug zu finden.
-                </p>
-                <button
-                  onClick={clearFilters}
+              </p>
+              <button
+                onClick={clearFilters}
                   className="bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl"
-                >
-                  Filter zurücksetzen
-                </button>
+              >
+                Filter zurücksetzen
+              </button>
               </div>
             </motion.div>
           )}

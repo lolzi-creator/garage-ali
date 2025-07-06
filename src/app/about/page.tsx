@@ -7,7 +7,6 @@ import GoogleMap from '@/components/GoogleMap';
 import { 
   Star, 
   Award, 
-  Users, 
   Calendar,
   CheckCircle,
   Shield,
@@ -24,32 +23,7 @@ const fadeInUp = {
 };
 
 export default function AboutPage() {
-  const achievements = [
-    {
-      icon: <Calendar className="w-6 h-6" />,
-      title: "Seit 2015",
-      description: "In Lengnau etabliert",
-      highlight: "9+ Jahre Erfahrung"
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "500+ Fahrzeuge",
-      description: "Erfolgreich verkauft",
-      highlight: "Premium Qualität"
-    },
-    {
-      icon: <Star className="w-6 h-6" />,
-      title: "5-Sterne",
-      description: "Google Bewertung",
-      highlight: "Kundenzufriedenheit"
-    },
-    {
-      icon: <Award className="w-6 h-6" />,
-      title: "Lizenziert",
-      description: "Autohändler",
-      highlight: "Zertifizierte Qualität"
-    }
-  ];
+
 
   const values = [
     {
@@ -82,9 +56,20 @@ export default function AboutPage() {
     <div className="min-h-screen bg-black">
       <Header />
       
-      <main className="pt-40 md:pt-44">
+      <main className="pt-20 md:pt-24">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-black via-gray-900 to-yellow-900 text-white py-8 md:py-16 lg:py-20">
+        <section className="relative bg-gradient-to-br from-black via-gray-900 to-yellow-900 text-white py-16 md:py-24 lg:py-32 min-h-screen">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(/images/test2.jpeg)`
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
+          </div>
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-yellow-500/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
@@ -98,68 +83,28 @@ export default function AboutPage() {
             >
               <div className="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-300 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-yellow-500/30">
                 <Star className="w-4 h-4" />
-                Premium Autohaus seit 2015
+                Automobile Fachmann EFZ
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6">
-                Über <span className="bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">uns</span>
+                Warum <span className="bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">mich wählen?</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4 md:mb-8">
-                Auto Checkpoint Garage Ali – Ihr vertrauensvoller Partner für exklusive Automobile 
-                in Lengnau. Über 500 erfolgreich verkaufte Premium-Fahrzeuge sprechen für sich.
+                Als erfahrener <span className="text-yellow-400 font-semibold">Automobile Fachmann EFZ</span> mit über 
+                8 Jahren Berufserfahrung biete ich Ihnen kompetente Beratung und erstklassigen Service. 
+                Vertrauen Sie auf meine Expertise bei Premium-Automobilen – jedes Fahrzeug wird von mir 
+                persönlich geprüft und mit größter Sorgfalt ausgewählt.
               </p>
+
             </motion.div>
           </div>
         </section>
 
-        {/* Achievements Section */}
-        <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-black to-gray-900">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              className="text-center mb-16"
-            >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
-                Unsere <span className="bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">Erfolge</span>
-              </h2>
-              <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-                Zahlen und Fakten, die für unsere Expertise sprechen
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={achievement.title}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true }}
-                  variants={fadeInUp}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-gray-900/50 backdrop-blur-xl rounded-xl md:rounded-2xl border border-yellow-500/30 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-yellow-500/10 hover:-translate-y-1 overflow-hidden"
-                >
-                  <div className="bg-yellow-900/20 p-3 md:p-6 border-b border-yellow-500/30">
-                    <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg md:rounded-xl flex items-center justify-center text-white shadow-lg mb-2 md:mb-4 mx-auto">
-                      {achievement.icon}
-                    </div>
-                    <h3 className="text-sm md:text-lg font-bold text-white text-center">{achievement.title}</h3>
-                    <p className="text-gray-300 text-xs md:text-sm text-center mt-1">{achievement.description}</p>
-                  </div>
-                  <div className="p-3 md:p-6 text-center">
-                    <span className="text-yellow-400 font-semibold text-xs md:text-sm">{achievement.highlight}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
 
 
-        {/* Technical Excellence Video Section */}
-        <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden">
+
+        {/* Personal Section */}
+        <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-black via-gray-900 to-gray-900 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-yellow-500/3 rounded-full blur-3xl"></div>
             <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-amber-500/3 rounded-full blur-3xl"></div>
@@ -175,64 +120,247 @@ export default function AboutPage() {
             >
               <div className="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-300 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-yellow-500/30">
                 <Wrench className="w-4 h-4" />
-                Technische Exzellenz
+                Fachkompetenz & Erfahrung
               </div>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
-                Fachkompetenz <span className="bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">in Aktion</span>
+                Ihr <span className="bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">Automobile Experte</span>
               </h2>
               <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-                Sehen Sie, mit welcher Präzision und Hingabe wir an jedem Fahrzeug arbeiten.
+                Lernen Sie den Fachmann hinter Auto Checkpoint Garage kennen.
               </p>
             </motion.div>
 
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               <motion.div
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
                 variants={fadeInUp}
                 transition={{ delay: 0.2 }}
-                className="relative"
+                className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center"
               >
-                <div className="bg-gray-900/50 backdrop-blur-xl rounded-xl md:rounded-2xl border border-gray-700/50 p-3 md:p-6 shadow-2xl">
-                  <div className="relative aspect-video rounded-lg md:rounded-xl overflow-hidden bg-gray-800">
-                                         <video
+                {/* Photo Section */}
+                <div className="relative">
+                  <div className="bg-gray-900/50 backdrop-blur-xl rounded-xl md:rounded-2xl border border-gray-700/50 p-4 md:p-6 shadow-2xl">
+                    <div className="relative aspect-[4/5] rounded-lg md:rounded-xl overflow-hidden bg-gray-800">
+                      <img
+                        src="/images/owner-photo.jpg" // You'll need to add this image
+                        alt="Automobile Fachmann - Auto Checkpoint Garage"
                        className="w-full h-full object-cover"
-                       autoPlay
-                       muted
-                       loop
-                       playsInline
-                       poster="/images/video-poster.jpg"
-                     >
-                       <source src="/images/2.mov" type="video/mp4" />
-                       Your browser does not support the video tag.
-                     </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 md:bottom-6 left-3 md:left-6 right-3 md:right-6">
-                      <div className="bg-black/80 backdrop-blur-sm rounded-lg px-3 py-2 md:px-4 md:py-3">
-                        <h3 className="text-white font-semibold mb-1 text-sm md:text-base">Professionelle Fahrzeugbetreuung</h3>
-                        <p className="text-gray-300 text-xs md:text-sm">Jedes Detail zählt – seit über 8 Jahren</p>
+                        onError={(e) => {
+                          // Fallback to a placeholder if image doesn't exist
+                          e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80";
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="bg-black/80 backdrop-blur-sm rounded-lg px-4 py-3">
+                          <h3 className="text-white font-semibold text-lg">Automobile Fachmann EFZ</h3>
+                          <p className="text-yellow-400 text-sm">Über 8 Jahre Berufserfahrung</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full opacity-10 blur-2xl hidden lg:block"></div>
+                  <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full opacity-20 blur-xl hidden lg:block"></div>
+                </div>
+
+                {/* Information Section */}
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 backdrop-blur-xl rounded-xl md:rounded-2xl border border-gray-700/50 p-6 md:p-8">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                      Qualifierte <span className="text-yellow-400">Expertise</span>
+                    </h3>
+                    
+                    <div className="space-y-6">
+                      {/* Qualification */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Award className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-white mb-2 text-lg">Automobile Fachmann EFZ</h4>
+                          <p className="text-gray-300 text-sm leading-relaxed">
+                            Eidgenössisches Fähigkeitszeugnis als Automobile Fachmann mit Spezialisierung 
+                            auf Premium-Fahrzeuge und moderne Fahrzeugtechnik.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Experience */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Calendar className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-white mb-2 text-lg">8+ Jahre Berufserfahrung</h4>
+                          <p className="text-gray-300 text-sm leading-relaxed">
+                            Seit 2015 erfolgreich tätig im Bereich Premium-Automobile mit 
+                                                         über 10 verkauften Fahrzeugen und zufriedenen Kunden.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Specialization */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Wrench className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-white mb-2 text-lg">Spezialisierung</h4>
+                          <p className="text-gray-300 text-sm leading-relaxed">
+                            Fachkompetenz in der Bewertung, Aufbereitung und dem Verkauf 
+                            von Premium-Automobilen aller namhaften Marken.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Contact CTA */}
+                    <div className="mt-8 pt-6 border-t border-gray-700/50">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-white font-medium">Persönliche Beratung gewünscht?</p>
+                          <p className="text-gray-400 text-sm">Kontaktieren Sie mich direkt</p>
+                        </div>
+                        <a
+                          href="tel:032 530 39 99"
+                          className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg"
+                        >
+                          Anrufen
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
-                
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full opacity-10 blur-2xl hidden md:block"></div>
-                <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full opacity-20 blur-xl hidden md:block"></div>
               </motion.div>
+            </div>
+          </div>
+        </section>
 
-              {/* Stats below video */}
+        {/* Certificates Section */}
+        <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-black to-gray-900">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="text-center mb-16"
+            >
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
+                Zertifikate & <span className="bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">Qualifikationen</span>
+              </h2>
+              <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+                Offizielle Bestätigungen unserer Fachkompetenz und Qualifikationen
+              </p>
+            </motion.div>
+
+                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              {/* Certificate 1 - EFZ */}
               <motion.div
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
                 variants={fadeInUp}
-                transition={{ delay: 0.4 }}
-                className="mt-6 md:mt-12"
+                transition={{ delay: 0.1 }}
+                className="bg-gray-900/50 backdrop-blur-xl rounded-xl md:rounded-2xl border border-gray-700/50 hover:border-yellow-500/30 transition-all duration-300 p-4 md:p-6"
               >
-                <div className="grid grid-cols-3 gap-3 md:gap-6">
-                  <div className="bg-gray-900/50 backdrop-blur-xl rounded-lg md:rounded-xl border border-gray-700/50 p-3 md:p-6 text-center">
+                               <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-800 mb-4 max-h-48">
+                   <img
+                     src="/images/efz-certificate.jpg" // You'll need to add this image
+                     alt="EFZ Automobile Fachmann Zertifikat"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to a placeholder certificate
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1024&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="bg-yellow-500/20 backdrop-blur-sm rounded-lg px-3 py-2 border border-yellow-500/30">
+                      <p className="text-yellow-400 font-semibold text-sm">EFZ Zertifikat</p>
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">Automobile Fachmann EFZ</h3>
+                <p className="text-gray-400 text-sm">Eidgenössisches Fähigkeitszeugnis</p>
+              </motion.div>
+
+              {/* Certificate 2 - Additional Qualification */}
+              <motion.div
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                transition={{ delay: 0.2 }}
+                className="bg-gray-900/50 backdrop-blur-xl rounded-xl md:rounded-2xl border border-gray-700/50 hover:border-yellow-500/30 transition-all duration-300 p-4 md:p-6"
+              >
+                               <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-800 mb-4 max-h-48">
+                   <img
+                     src="/images/additional-certificate.jpg" // You'll need to add this image
+                     alt="Zusätzliche Qualifikation"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to a placeholder certificate
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1024&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="bg-yellow-500/20 backdrop-blur-sm rounded-lg px-3 py-2 border border-yellow-500/30">
+                      <p className="text-yellow-400 font-semibold text-sm">Weiterbildung</p>
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">Zusatzqualifikation</h3>
+                <p className="text-gray-400 text-sm">Spezialisierung Premium-Fahrzeuge</p>
+              </motion.div>
+
+              {/* Certificate 3 - Business License */}
+              <motion.div
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                transition={{ delay: 0.3 }}
+                className="bg-gray-900/50 backdrop-blur-xl rounded-xl md:rounded-2xl border border-gray-700/50 hover:border-yellow-500/30 transition-all duration-300 p-4 md:p-6"
+              >
+                               <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-800 mb-4 max-h-48">
+                   <img
+                     src="/images/business-license.jpg" // You'll need to add this image
+                     alt="Gewerbeberechtigung"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to a placeholder certificate
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1024&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="bg-yellow-500/20 backdrop-blur-sm rounded-lg px-3 py-2 border border-yellow-500/30">
+                      <p className="text-yellow-400 font-semibold text-sm">Lizenz</p>
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">Gewerbeberechtigung</h3>
+                <p className="text-gray-400 text-sm">Automobil-Handel Schweiz</p>
+              </motion.div>
+            </div>
+
+            {/* Stats Section */}
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ delay: 0.4 }}
+              className="mt-12 md:mt-16"
+            >
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div className="bg-gray-900/50 backdrop-blur-xl rounded-lg md:rounded-xl border border-gray-700/50 p-4 md:p-6 text-center">
                     <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center mx-auto mb-2 md:mb-3">
                       <Calendar className="w-4 h-4 md:w-6 md:h-6 text-white" />
                     </div>
@@ -240,7 +368,15 @@ export default function AboutPage() {
                     <div className="text-gray-400 text-xs md:text-sm">Jahre Erfahrung</div>
                   </div>
                   
-                  <div className="bg-gray-900/50 backdrop-blur-xl rounded-lg md:rounded-xl border border-gray-700/50 p-3 md:p-6 text-center">
+                <div className="bg-gray-900/50 backdrop-blur-xl rounded-lg md:rounded-xl border border-gray-700/50 p-4 md:p-6 text-center">
+                  <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center mx-auto mb-2 md:mb-3">
+                    <Award className="w-4 h-4 md:w-6 md:h-6 text-white" />
+                  </div>
+                  <div className="text-lg md:text-2xl font-bold text-white mb-1">EFZ</div>
+                  <div className="text-gray-400 text-xs md:text-sm">Qualifikation</div>
+                </div>
+                
+                <div className="bg-gray-900/50 backdrop-blur-xl rounded-lg md:rounded-xl border border-gray-700/50 p-4 md:p-6 text-center">
                     <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center mx-auto mb-2 md:mb-3">
                       <CheckCircle className="w-4 h-4 md:w-6 md:h-6 text-white" />
                     </div>
@@ -248,7 +384,7 @@ export default function AboutPage() {
                     <div className="text-gray-400 text-xs md:text-sm">Qualitätskontrolle</div>
                   </div>
                   
-                  <div className="bg-gray-900/50 backdrop-blur-xl rounded-lg md:rounded-xl border border-gray-700/50 p-3 md:p-6 text-center">
+                <div className="bg-gray-900/50 backdrop-blur-xl rounded-lg md:rounded-xl border border-gray-700/50 p-4 md:p-6 text-center">
                     <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center mx-auto mb-2 md:mb-3">
                       <Star className="w-4 h-4 md:w-6 md:h-6 text-white" />
                     </div>
@@ -257,7 +393,6 @@ export default function AboutPage() {
                   </div>
                 </div>
               </motion.div>
-            </div>
           </div>
         </section>
 
@@ -305,14 +440,14 @@ export default function AboutPage() {
                           </div>
                         ))}
                       </div>
-                    </div>
-                  </div>
+                </div>
+              </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
-
+        
         {/* Our Location */}
         <GoogleMap />
       </main>

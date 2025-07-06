@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { contactInfo, businessInfo } from '@/data/contact';
-import backgroundImage from '@/assets/images/123.png';
 
 export default function Hero() {
   const goToAbout = () => {
@@ -13,17 +12,17 @@ export default function Hero() {
     <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white pt-40 md:pt-44 pb-0 overflow-hidden min-h-screen flex items-center">
       {/* Video Background */}
       <div className="absolute inset-0">
-                 <video
-           className="absolute inset-0 w-full h-full object-cover"
-           autoPlay
-           muted
-           loop
-           playsInline
-           poster={backgroundImage.src}
-         >
-           <source src="/images/1.mp4" type="video/mp4" />
-           Your browser does not support the video tag.
-         </video>
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/test2.jpg"
+        >
+          <source src="/images/7.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
       </div>
@@ -47,15 +46,16 @@ export default function Hero() {
             >
 
 
-              <h1 className="text-4xl md:text-6xl xl:text-8xl font-black leading-none tracking-tight">
-                <span className="block">PREMIUM</span>
-                <span className="block bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent">AUTOMOBILES</span>
+              <h1 className="text-3xl md:text-5xl xl:text-6xl font-black leading-tight tracking-tight">
+                <span className="block bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent">Ein Garagist, dem Sie</span>
+                <span className="block bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent">vertrauen können</span>
                 <span className="block text-2xl md:text-3xl xl:text-4xl text-gray-400 font-light mt-2">Lengnau • Schweiz</span>
               </h1>
 
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Exklusive Fahrzeuge. Professionelle Beratung. Transparente Preise. 
-                Ihr Partner für Premium-Automobile in der Region.
+                Ein Garagist, dem Sie vertrauen können. Nicht der günstigste, nicht der größte 
+                - aber vielleicht der ehrlichste Garagist den Sie finden werden. Bei jeder Reparatur 
+                erhalten Sie selbstverständlich ein Ersatzfahrzeug.
               </p>
             </motion.div>
 

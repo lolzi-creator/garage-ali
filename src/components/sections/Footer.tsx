@@ -10,16 +10,17 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">
-                AUTO CHECKPOINT GARAGE
+              <h3 className="text-2xl font-bold mb-2 leading-tight">
+                <div>
+                  <span className="text-blue-400 font-mono tracking-wider">AUTO</span>{' '}
+                  <span className="text-yellow-400 font-mono tracking-wider">CHECKPOINT</span>
+                </div>
+                <div className="text-red-500 font-mono tracking-wider">GARAGE</div>
               </h3>
-              <p className="text-xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent tracking-widest">
-                ALI
-              </p>
               <p className="text-gray-400 text-sm mt-2 uppercase tracking-wide">Premium Autohaus</p>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              Exklusive Automobile seit {businessInfo.established}. Über 500 verkaufte Premium-Fahrzeuge. 
+              Exklusive Automobile seit {businessInfo.established}. Über 10 verkaufte Premium-Fahrzeuge. 
               Ihr vertrauensvoller Partner für erstklassige Automobile in Lengnau.
             </p>
             <div className="flex gap-3 pt-4">
@@ -92,7 +93,9 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 mt-16">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} AUTO CHECKPOINT GARAGE ALI. Alle Rechte vorbehalten.
+              © {new Date().getFullYear()} <span className="text-blue-400 font-mono tracking-wider">AUTO</span>{' '}
+              <span className="text-yellow-400 font-mono tracking-wider">CHECKPOINT</span>{' '}
+              <span className="text-red-500 font-mono tracking-wider">GARAGE</span>. Alle Rechte vorbehalten.
             </div>
             <div className="flex gap-8 text-sm">
               <a href="/datenschutz" className="text-gray-500 hover:text-orange-400 transition-colors font-medium">DATENSCHUTZ</a>

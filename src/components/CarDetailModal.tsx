@@ -32,6 +32,13 @@ export default function CarDetailModal({ car, isOpen, onClose }: CarDetailModalP
   const [isFavorite, setIsFavorite] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // WhatsApp helper function
+  const createWhatsAppLink = (carTitle: string) => {
+    const phoneNumber = '+41764330475'; // WhatsApp number: +41 76 433 04 75
+    const message = `Hallo! Ich interessiere mich für das Fahrzeug: ${carTitle}. Können Sie mir weitere Informationen geben oder einen Besichtigungstermin vereinbaren?`;
+    return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  };
+
   const nextImage = () => {
     if (car?.images && car.images.length > 1) {
       setCurrentImageIndex((prev) => (prev + 1) % car.images.length);
@@ -109,7 +116,7 @@ export default function CarDetailModal({ car, isOpen, onClose }: CarDetailModalP
     if (isOpen && car) {
       setCurrentImageIndex(0);
     }
-  }, [isOpen, car?.id]);
+  }, [isOpen, car]);
 
   // Keyboard navigation for gallery
   useEffect(() => {
@@ -273,24 +280,38 @@ export default function CarDetailModal({ car, isOpen, onClose }: CarDetailModalP
                         </div>
                         <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base">Inkl. MwSt. und Überführung</p>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          <button 
-                            onClick={() => window.open(`tel:${contactInfo.phone}`, '_self')}
-                            className="group relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 px-4 rounded-2xl font-bold transition-all shadow-xl touch-manipulation"
+                        <div className="grid grid-cols-1 gap-3">
+                          <a 
+                            href={createWhatsAppLink(`${car.brand} ${car.model} (${car.year})`)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-4 rounded-2xl font-bold transition-all shadow-xl touch-manipulation flex items-center justify-center gap-2"
                           >
                             <span className="relative z-10 flex items-center justify-center gap-2">
-                              <Phone className="w-4 h-4" />
-                              <span className="text-sm sm:text-base">ANRUFEN</span>
+                              <span className="text-sm sm:text-base">💬</span>
+                              <span className="text-sm sm:text-base">WHATSAPP NACHRICHT</span>
                             </span>
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                          </button>
-                          <button 
-                            onClick={() => window.open(`mailto:${contactInfo.email}?subject=Interesse an ${car.brand} ${car.model}`, '_self')}
-                            className="border-2 border-white/30 text-white hover:bg-white hover:text-black py-3 px-4 rounded-2xl font-bold transition-all backdrop-blur-sm flex items-center justify-center gap-2 touch-manipulation"
-                          >
-                            <Mail className="w-4 h-4" />
-                            <span className="text-sm sm:text-base">E-MAIL</span>
-                          </button>
+                          </a>
+                          <div className="grid grid-cols-2 gap-3">
+                            <button 
+                              onClick={() => window.open(`tel:${contactInfo.phone}`, '_self')}
+                              className="group relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 px-4 rounded-2xl font-bold transition-all shadow-xl touch-manipulation"
+                            >
+                              <span className="relative z-10 flex items-center justify-center gap-2">
+                                <Phone className="w-4 h-4" />
+                                <span className="text-sm sm:text-base">ANRUFEN</span>
+                              </span>
+                              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                            </button>
+                            <button 
+                              onClick={() => window.open(`mailto:${contactInfo.email}?subject=Interesse an ${car.brand} ${car.model}`, '_self')}
+                              className="border-2 border-white/30 text-white hover:bg-white hover:text-black py-3 px-4 rounded-2xl font-bold transition-all backdrop-blur-sm flex items-center justify-center gap-2 touch-manipulation"
+                            >
+                              <Mail className="w-4 h-4" />
+                              <span className="text-sm sm:text-base">E-MAIL</span>
+                            </button>
+                          </div>
                         </div>
                         
                         <p className="text-gray-400 text-sm mt-4">
@@ -387,16 +408,30 @@ export default function CarDetailModal({ car, isOpen, onClose }: CarDetailModalP
                         Kontaktieren Sie {car.contactPerson} direkt für eine Probefahrt oder weitere Informationen.
                       </p>
                       
-                      <button 
-                        onClick={() => window.open(`tel:${contactInfo.phone}`, '_self')}
-                        className="group relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-2xl font-bold transition-all shadow-xl touch-manipulation w-full sm:w-auto"
-                      >
-                        <span className="relative z-10 flex items-center justify-center gap-2">
-                          <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                          <span className="text-sm sm:text-base">{contactInfo.phone}</span>
-                        </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                      </button>
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                        <a 
+                          href={createWhatsAppLink(`${car.brand} ${car.model} (${car.year})`)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-2xl font-bold transition-all shadow-xl touch-manipulation flex items-center justify-center gap-2"
+                        >
+                          <span className="relative z-10 flex items-center justify-center gap-2">
+                            <span className="text-sm sm:text-base">💬</span>
+                                                         <span className="text-sm sm:text-base">WhatsApp Nachricht</span>
+                          </span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                        </a>
+                        <button 
+                          onClick={() => window.open(`tel:${contactInfo.phone}`, '_self')}
+                          className="group relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-2xl font-bold transition-all shadow-xl touch-manipulation"
+                        >
+                          <span className="relative z-10 flex items-center justify-center gap-2">
+                            <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                            <span className="text-sm sm:text-base">{contactInfo.phone}</span>
+                          </span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                        </button>
+                      </div>
                     </div>
                   </div>
               </div>

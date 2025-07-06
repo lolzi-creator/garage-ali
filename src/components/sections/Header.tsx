@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { scrollToElement } from '@/lib/utils';
 import logoImage from '@/assets/images/143.png';
+import { contactInfo } from '@/data/contact';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,43 +51,59 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
-  return (
+    return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Promotional Top Bar */}
+      {/* Contact Info Bar */}
       <div className="bg-gradient-to-r from-red-600 via-blue-500 via-yellow-500 to-blue-600 text-white py-2 px-4">
-        <div className="container mx-auto text-center">
-          <p className="text-sm font-medium">
-            ⭐ <span className="font-bold">NEU:</span> Premium Auto-Services • MFK Bereitstellung • Klima Service • Professionelle Fahrzeug-Aufbereitung
-          </p>
+        <div className="container mx-auto">
+          <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center gap-4 md:gap-6">
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-white" />
+                <a href={`tel:${contactInfo.phone}`} className="hover:text-yellow-200 transition-colors font-medium">
+                  {contactInfo.phone}
+                </a>
+              </div>
+              <div className="hidden md:flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-white" />
+                <span className="text-white/90">
+                  {contactInfo.address.street}, {contactInfo.address.zipCode} {contactInfo.address.city}
+                </span>
+              </div>
+            </div>
+            <div className="hidden lg:block text-white/80 text-xs">
+              ⭐ <span className="font-bold">NEU:</span> Premium Services • MFK • Klima • Aufbereitung
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Main Header */}
       <div className="bg-black/20 backdrop-blur-md border-b border-white/10">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-center">
-            {/* Left Side Navigation - Close to Logo */}
-            <nav className="hidden lg:flex items-center gap-6 mr-8">
-              <button
-                onClick={() => handleNavClick('/')}
-                className="text-white hover:text-orange-400 font-bold text-lg uppercase tracking-wide transition-all cursor-pointer"
-              >
-                HOME
-              </button>
-              <button
-                onClick={() => window.location.href = '/cars'}
-                className="text-white hover:text-orange-400 font-bold text-lg uppercase tracking-wide transition-all cursor-pointer"
-              >
-                FAHRZEUGE
-              </button>
-            </nav>
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-center">
+          {/* Left Side Navigation - Close to Logo */}
+          <nav className="hidden lg:flex items-center gap-6 mr-8">
+            <button
+              onClick={() => handleNavClick('/')}
+              className="text-white hover:text-orange-400 font-bold text-lg uppercase tracking-wide transition-all cursor-pointer"
+            >
+              HOME
+            </button>
+            <button
+              onClick={() => window.location.href = '/cars'}
+              className="text-white hover:text-orange-400 font-bold text-lg uppercase tracking-wide transition-all cursor-pointer"
+            >
+              FAHRZEUGE
+            </button>
+          </nav>
 
-            {/* Center Logo */}
-            <Link href="/" className="group">
-              <div className="w-16 h-16 md:w-20 md:h-20 group-hover:scale-105 transition-transform">
-                <img 
-                  src={logoImage.src} 
-                  alt="Auto Checkpoint Garage Ali" 
+          {/* Center Logo */}
+          <Link href="/" className="group">
+            <div className="w-16 h-16 md:w-20 md:h-20 group-hover:scale-105 transition-transform">
+              <img 
+                src={logoImage.src} 
+                alt="Auto Checkpoint Garage Ali" 
                   className="w-full h-full object-contain -rotate-90 hover:animate-spin"
                   style={{
                     animation: 'spin 1s linear'
@@ -97,50 +114,50 @@ export default function Header() {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.animation = 'spin 1s linear';
                   }}
-                />
-              </div>
-            </Link>
+              />
+            </div>
+          </Link>
 
-            {/* Right Side Navigation - Close to Logo */}
-            <nav className="hidden lg:flex items-center gap-6 ml-8">
-              <button
-                onClick={() => window.location.href = '/about'}
-                className="text-white hover:text-orange-400 font-bold text-lg uppercase tracking-wide transition-all cursor-pointer"
-              >
-                ÜBER UNS
-              </button>
-              <button
+          {/* Right Side Navigation - Close to Logo */}
+          <nav className="hidden lg:flex items-center gap-6 ml-8">
+            <button
+              onClick={() => window.location.href = '/about'}
+              className="text-white hover:text-orange-400 font-bold text-lg uppercase tracking-wide transition-all cursor-pointer"
+            >
+              ÜBER UNS
+            </button>
+            <button
                 onClick={() => window.location.href = '/services'}
                 className="relative group text-white hover:text-orange-400 font-bold text-lg uppercase tracking-wide transition-all cursor-pointer"
-              >
+            >
                 <span className="relative">
                   SERVICES
                   <span className="absolute -top-2 -right-8 bg-gradient-to-r from-blue-500 to-sky-600 text-white px-2 py-0.5 rounded-full text-xs font-bold">
                     TOP
                   </span>
                 </span>
-              </button>
-              <button
-                onClick={() => window.location.href = '/admin'}
-                className="text-gray-400 hover:text-orange-400 font-bold text-sm uppercase tracking-wide transition-all cursor-pointer"
-              >
-                ADMIN
-              </button>
-            </nav>
+            </button>
+            <button
+              onClick={() => window.location.href = '/admin'}
+              className="text-gray-400 hover:text-orange-400 font-bold text-sm uppercase tracking-wide transition-all cursor-pointer"
+            >
+              ADMIN
+            </button>
+          </nav>
 
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+        </div>
+        
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden absolute right-4 top-4 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center z-10"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-white" />
-            ) : (
-              <Menu className="w-6 h-6 text-white" />
-            )}
-          </button>
+        >
+          {isMenuOpen ? (
+            <X className="w-6 h-6 text-white" />
+          ) : (
+            <Menu className="w-6 h-6 text-white" />
+          )}
+        </button>
         </div>
       </div>
 
@@ -249,15 +266,15 @@ export default function Header() {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.5, delay: item.delay }}
                     >
-                      <button
-                        onClick={() => {
+                <button
+                  onClick={() => {
                           if (item.href === '/') {
                             handleNavClick('/');
                           } else {
                             window.location.href = item.href;
                           }
-                          setIsMenuOpen(false);
-                        }}
+                    setIsMenuOpen(false);
+                  }}
                         className={`group relative block w-full py-4 px-8 ${
                           item.special 
                             ? 'text-white hover:text-yellow-400' 
@@ -290,7 +307,7 @@ export default function Header() {
                           initial={{ width: 0 }}
                           whileHover={{ width: '60%' }}
                         />
-                      </button>
+                </button>
                     </motion.div>
                   ))}
 
@@ -307,7 +324,7 @@ export default function Header() {
                       <p className="text-gray-300 text-sm">2543 Lengnau</p>
                     </div>
                   </motion.div>
-                </nav>
+              </nav>
               </div>
             </div>
           </motion.div>
